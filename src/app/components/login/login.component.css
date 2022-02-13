@@ -1,0 +1,9 @@
+.card{
+margin: 30px;
+  background-color: #ffffff;
+  border: 1px solid black;
+  opacity: 0.9;
+}
+.card-title{
+font-size: 1.5rem !important;
+}

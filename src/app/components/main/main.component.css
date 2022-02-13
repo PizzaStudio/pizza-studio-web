@@ -1,0 +1,7 @@
+.background{
+    background-image: url("src/assets/images/Pizza-Login-Background2.jpeg");
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover;
+    height: 500px;
+}
