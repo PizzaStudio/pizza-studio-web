@@ -1,0 +1,16 @@
+.errspan {
+        float: right;
+        margin-right: 6px;
+        margin-top: -28px;
+        position: relative;
+        z-index: 2;
+        color: red;
+    }
+.errText{
+ font-size: 13px;
+ color: red;
+}
+.label{
+margin-bottom: 0rem !important;
+font-weight: 400!important;
+}
