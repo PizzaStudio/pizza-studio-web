@@ -1,0 +1,119 @@
+<ng-template #modal let-modal>
+    <div class="modal-header bg-info">
+        <h4 class="modal-title">Signup <br/><small>It's quick and easy</small></h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross Click')">
+            <span aria-hidden="true">x</span>
+        </button>
+    </div>
+    <form #form="ngForm">
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <input name="firstName" type="text" class="form-control" placeholder="First name" [(ngModel)]="registerForm.firstName"
+                        required #fname="ngModel">
+                        <span *ngIf="(fname.invalid && fname.touched) && fname.errors?.['required']" class="fa fa-exclamation-circle errspan"></span>
+                        <div *ngIf="(fname.invalid && fname.touched) && fname.errors?.['required']">
+                            <p class="errText">First Name is required.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <input name="lastName" type="text" class="form-control" placeholder="Last name" [(ngModel)]="registerForm.lastName"
+                        required #lname="ngModel">
+                        <span *ngIf="(lname.invalid && lname.touched) && lname.errors?.['required']" class="fa fa-exclamation-circle errspan"></span>
+                        <div *ngIf="(lname.invalid && lname.touched) && lname.errors?.['required']">
+                            <p class="errText">Last Name is required.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <input name="mobileNumber" type="text" class="form-control" placeholder="Mobile number" [(ngModel)]="registerForm.mobileNumber" required
+                        #mobileNumber="ngModel" pattern="^((\\+91-?)|0)?[0-9]{10}$">
+                        <span *ngIf="(mobileNumber.invalid && mobileNumber.touched) && mobileNumber.errors?.['required']" class="fa fa-exclamation-circle errspan"></span>
+                        <div *ngIf="(mobileNumber.invalid && mobileNumber.touched) && mobileNumber.errors?.['required']">
+                            <p class="errText">Mobile Number is required.</p>
+                        </div>
+                        <div *ngIf="(mobileNumber.invalid && mobileNumber.touched) && mobileNumber.errors?.['pattern']">
+                            <p class="errText">Mobile Number is invalid.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <input name="email" type="email" class="form-control" placeholder="Email address" [(ngModel)]="registerForm.email" required email
+                        #email="ngModel">
+                        <span *ngIf="(email.invalid && email.touched) && email.errors?.['required']" class="fa fa-exclamation-circle errspan"></span>
+                        <div *ngIf="(email.invalid && email.touched)">
+                            <p *ngIf="email.errors?.['required']" class="errText">Email is required.</p>
+                            <p *ngIf="email.errors?.['email']" class="errText">Email is invalid.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <input name="password" type="password" class="form-control" placeholder="New Password" [(ngModel)]="registerForm.password" required
+                        #password="ngModel" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}">
+                        <span *ngIf="(password.invalid && password.touched) && password.errors?.['required']" class="fa fa-exclamation-circle errspan"></span>
+                        <div *ngIf="(password.invalid && password.touched) && password.errors?.['required']">
+                            <p class="errText">Password is required.</p>
+                        </div>
+                        <div *ngIf="(password.invalid && password.touched) && password.errors?.['pattern']">
+                            <p class="errText">Password does not meet our requirements.<i class="fa fa-info-circle" placement="top" ngbTooltip="Password should contain minimum 8 characters with combination of alphanumeric and special characters"></i> </p>
+                        </div>
+                     </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label>Date of birth</label>
+                        <p-calendar name="dob" [showButtonBar]="true" [showIcon]="true" [(ngModel)]="registerForm.dateOfBirth" [required]="true"
+                        #dob="ngModel"></p-calendar>
+                        <div *ngIf="(dob.invalid && dob.touched) && dob.errors?.['required']">
+                            <p class="errText">Date of Birth is required.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label>Gender</label>
+                        <div class="p-field-radiobutton">
+                            <p-radioButton name="gender" value="male" [(ngModel)]="registerForm.gender" [required]="true" #gender="ngModel"></p-radioButton>
+                            <label class="label">&nbsp;Male</label>
+                            &nbsp;
+                            <p-radioButton name="gender" value="female" [(ngModel)]="registerForm.gender"  [required]="true" #gender="ngModel"></p-radioButton>
+                            <label class="label">&nbsp;Female</label>
+                        </div>
+                        <div *ngIf="(gender.invalid && gender.touched) && gender.errors?.['required']">
+                            <p class="errText">Gender is required.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <div class="float-end me-2">
+                <button type="reset" class="btn btn-sm btn-secondary">Cancel</button>
+            </div>
+            <div class="float-end me-2 d-inline-block" tabindex="0" data-toggle="tooltip" [title]="(form.valid)? '':'Fill all required fields'">
+                <button type="submit" class="btn btn-sm btn-info" (click)="registerUser()"
+                        [style]="!(form.valid)?'pointerEvents:none':''"
+                        [disabled]="!(form.valid)">Create Account</button>
+            </div>
+        </div>
+    </form>
+</ng-template>
+
+<div class="float-start">
+    <label>New here?</label>
+    <a href="#" class="ms-2" (click)="openMyModal(modal)">Create an account</a>
+</div>
