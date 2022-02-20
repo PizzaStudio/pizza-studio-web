@@ -1,23 +1,11 @@
 div{
 text-align: center;
-font-family: cursive;
-border: 5px solid rgba(0, 0, 0, .4);
-background-color: white;
+font-family: serif;
+background-color: transparent;
 margin-top: 30px !important;
-opacity: 0.8;
 height: 85%;
-  animation-name: blink ;
-    animation-duration: .5s ;
-    animation-timing-function: step-end ;
-    animation-iteration-count: infinite ;
-    animation-direction: alternate ;
 }
 .content{
 font-size: 18px;
-}
-text-pink{
-color: beige;
-}
-@keyframes blink {
-   50% { border-color: brown; }
+font-weight: 900;
 }
