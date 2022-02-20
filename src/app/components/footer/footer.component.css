@@ -1,0 +1,7 @@
+footer{
+background-color: rgba(var(--bs-dark-rgb),var(--bs-bg-opacity))!important;
+margin-left: 0px !important;
+}
+.text-white{
+font-size: small;
+}
