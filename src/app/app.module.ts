@@ -12,7 +12,8 @@ import {CalendarModule} from 'primeng/calendar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {RadioButtonModule} from 'primeng/radiobutton';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
-import { BannerComponent } from './components/banner/banner.component'
+import { BannerComponent } from './components/banner/banner.component';
+import { FooterComponent } from './components/footer/footer.component'
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { BannerComponent } from './components/banner/banner.component'
     MainComponent,
     LoginComponent,
     RegisterComponent,
-    BannerComponent
+    BannerComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
