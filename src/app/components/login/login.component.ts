@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { catchError, map, of } from 'rxjs';
 import {AuthenticationService} from '../../services/authentication.service';
 
@@ -13,7 +14,9 @@ export class LoginComponent implements OnInit {
    password: string = "";
    isError: boolean = false;
    error = {
-    message: undefined
+    message: undefined,
+    type: 'alert alert-danger alert-dismissible fade show',
+    show: false
    }
 
   constructor(private authenticationService: AuthenticationService) { 
@@ -33,10 +36,21 @@ export class LoginComponent implements OnInit {
     this.authenticationService.authenticate(this.userName,this.password)
     .pipe(
       catchError(err =>{
+        this.error.message = err.error.message?err.error.message:"Internal Server Error";
+        this.error.show = true;
+        this.timeoutAlert();
         return err;
       })
     )
     .subscribe()
    } 
   }
+
+   timeoutAlert() {
+    window.setTimeout(() =>{
+      this.error.show = false;
+    },3000)
+  }
 }
+
+

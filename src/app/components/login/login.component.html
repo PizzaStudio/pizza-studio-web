@@ -5,6 +5,7 @@
     </div>
     <form class="mt-2">
         <div class="card-body">
+            <app-flash-message [show]="error.show" [message]="error.message" [type]="error.type"></app-flash-message>
             <div class="form-group">
                 <label>Email Id</label>
                 <input type="email" class="form-control" name="user" placeholder="Enter email" [(ngModel)]="userName" required>
