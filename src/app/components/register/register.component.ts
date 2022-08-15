@@ -23,6 +23,7 @@ export class RegisterComponent implements OnInit {
    }
 
    registerUser(){
+   //TODO Logic goes here.
    console.log(this.registerForm)
    }
 }

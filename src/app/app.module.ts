@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -14,6 +14,8 @@ import {RadioButtonModule} from 'primeng/radiobutton';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { BannerComponent } from './components/banner/banner.component';
 import { FooterComponent } from './components/footer/footer.component'
+import { StudioInterceptor } from './interceptors/studio.interceptor'
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -33,9 +35,11 @@ import { FooterComponent } from './components/footer/footer.component'
     CalendarModule,
     RadioButtonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    ToastrModule.forRoot()
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: StudioInterceptor, multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
