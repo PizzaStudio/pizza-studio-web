@@ -14,8 +14,8 @@ import {RadioButtonModule} from 'primeng/radiobutton';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { BannerComponent } from './components/banner/banner.component';
 import { FooterComponent } from './components/footer/footer.component'
-import { StudioInterceptor } from './interceptors/studio.interceptor'
-import { ToastrModule } from 'ngx-toastr';
+import { StudioInterceptor } from './interceptors/studio.interceptor';
+import { FlashMessageComponent } from './components/flash-message/flash-message.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +25,8 @@ import { ToastrModule } from 'ngx-toastr';
     LoginComponent,
     RegisterComponent,
     BannerComponent,
-    FooterComponent
+    FooterComponent,
+    FlashMessageComponent
   ],
   imports: [
     BrowserModule,
@@ -36,8 +37,7 @@ import { ToastrModule } from 'ngx-toastr';
     RadioButtonModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule,
-    ToastrModule.forRoot()
+    HttpClientModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: StudioInterceptor, multi:true}],
   bootstrap: [AppComponent]
