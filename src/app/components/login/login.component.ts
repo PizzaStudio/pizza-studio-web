@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ToastrService } from 'ngx-toastr';
 import { catchError, map, of } from 'rxjs';
 import {AuthenticationService} from '../../services/authentication.service';
 
