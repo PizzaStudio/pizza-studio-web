@@ -7,6 +7,7 @@
     </div>
     <form #form="ngForm">
         <div class="modal-body">
+            <app-flash-message [show]="error.show" [message]="error.message" [type]="error.type"></app-flash-message>
             <div class="row">
                 <div class="col-sm-6">
                     <div class="form-group">
@@ -45,7 +46,7 @@
                 </div>
                 <div class="col-sm-6">
                     <div class="form-group">
-                        <input name="email" type="email" class="form-control" placeholder="Email address" [(ngModel)]="registerForm.email" required email
+                        <input name="email" type="email" class="form-control" placeholder="Email address" [(ngModel)]="registerForm.emailId" required email
                         #email="ngModel">
                         <span *ngIf="(email.invalid && email.touched) && email.errors?.['required']" class="fa fa-exclamation-circle errspan"></span>
                         <div *ngIf="(email.invalid && email.touched)">
@@ -87,10 +88,10 @@
                     <div class="form-group">
                         <label>Gender</label>
                         <div class="p-field-radiobutton">
-                            <p-radioButton name="gender" value="male" [(ngModel)]="registerForm.gender" [required]="true" #gender="ngModel"></p-radioButton>
+                            <p-radioButton name="gender" value="M" [(ngModel)]="registerForm.gender" [required]="true" #gender="ngModel"></p-radioButton>
                             <label class="label">&nbsp;Male</label>
                             &nbsp;
-                            <p-radioButton name="gender" value="female" [(ngModel)]="registerForm.gender"  [required]="true" #gender="ngModel"></p-radioButton>
+                            <p-radioButton name="gender" value="F" [(ngModel)]="registerForm.gender"  [required]="true" #gender="ngModel"></p-radioButton>
                             <label class="label">&nbsp;Female</label>
                         </div>
                         <div *ngIf="(gender.invalid && gender.touched) && gender.errors?.['required']">
