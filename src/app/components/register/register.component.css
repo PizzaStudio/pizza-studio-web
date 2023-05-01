@@ -14,3 +14,8 @@
 margin-bottom: 0rem !important;
 font-weight: 400!important;
 }
+.bg-dark
+{
+    opacity: 0.9;
+
+}
