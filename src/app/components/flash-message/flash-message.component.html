@@ -1,3 +1,7 @@
 <div [class]="type" *ngIf="show" data-auto-dismiss role="alert">
     <p class="mb-0">{{message}}</p>
+    <br/>
+    <p *ngIf="showTimer">
+    Modal will close in <i>{{secondsLeft}}</i> seconds.
+    </p>
 </div>

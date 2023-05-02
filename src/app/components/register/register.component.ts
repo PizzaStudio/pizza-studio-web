@@ -3,7 +3,7 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {Register} from 'src/app/classes/register';
 import {Role} from 'src/app/classes/enums/role';
 import {StudioService} from 'src/app/services/studio.service';
-import { catchError, map } from 'rxjs';
+import { catchError, map, timer, take } from 'rxjs';
 
 @Component({
   selector: 'app-register',
@@ -14,12 +14,19 @@ export class RegisterComponent implements OnInit {
 
     selectedItem: any;
     registerForm: Register;
+    secondsLeft: any;
     modalReference: any;
      error = {
         message: "",
         type: 'alert alert-danger alert-dismissible fade show',
-        show: false
+        show: false,
+        showTimer: false
        }
+       countdown$ = timer(0, 1000).pipe(
+             take(5),
+             map(secondsElapsed => 5 - secondsElapsed)
+           );
+
   constructor(private modalService:NgbModal, private studioService: StudioService) {
   this.registerForm = new Register();
    }
@@ -37,11 +44,12 @@ export class RegisterComponent implements OnInit {
        .pipe(
             map((registeredUser: Register) =>{
                 this.error.type = "alert alert-success alert-dismissible fade show";
-                this.error.message = "User Register Successfully, Model will close now, Please login to continue";
+                this.error.message = "User Register Successfully, Please login to continue";
                 this.error.show = true;
+                this.error.showTimer = true;
                 setTimeout(() => {
                      this.modalReference.close();
-                  }, 3000)
+                  }, 5000)
                 return registeredUser;
             }),
              catchError((err:any) =>{
@@ -52,4 +60,6 @@ export class RegisterComponent implements OnInit {
            )
        .subscribe();
    }
+
+
 }
